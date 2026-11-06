@@ -43,6 +43,14 @@ npx skills update
 
 There is no automatic update. Restart or start a new agent session after updating so skill discovery refreshes.
 
+### Pin a release
+
+To avoid silently following `main`, pin a release tag:
+
+```bash
+npx skills add lpsjor/godot-ui-skills@v0.1.0
+```
+
 ### Manual fallback
 
 For agents the CLI does not detect, or environments without Node, link the skill folders directly. Each folder under `skills/` is one complete skill.

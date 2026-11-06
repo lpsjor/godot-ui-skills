@@ -40,6 +40,12 @@ npx skills update
 
 Updates are explicit. The CLI does not poll GitHub in the background. Start a new agent session after updating so discovery refreshes; some agents also expose a reload command.
 
+Pin a release instead of following `main`:
+
+```bash
+npx skills add lpsjor/godot-ui-skills@v0.1.0
+```
+
 ## Local checkout
 
 ```bash
