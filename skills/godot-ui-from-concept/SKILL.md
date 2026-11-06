@@ -130,6 +130,8 @@ See [verification](references/verification.md) for commands and test shapes.
 - An `AspectRatioContainer` does not derive its own size from its ratio. Make it expand, use `STRETCH_FIT`, and align its child deliberately.
 - Do not put a floating gear or FAB inside a container.
 - Do not reserve banner space with a visible placeholder label. Reserve a `Control` slot and let the native ad overlay occupy it.
+- A Label's height is its line height, not its font size. Measure `get_combined_minimum_size()` before hardcoding vertical spacers or offsets.
+- A saved record is not automatically resumable. Derive status labels from the persisted state, not from record existence.
 - Do not copy a case study's pixel values as a universal spec. Re-measure the new concept.
 - Update old tests to the new contract. A test that asserts the old layout is not a reason to keep the old layout.
 

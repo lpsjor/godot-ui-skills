@@ -37,6 +37,18 @@ Prefer ratios and contracts over exact screenshot pixels:
 
 Do not test a specific font's glyph shapes or a screenshot's exact color. Those are visual review.
 
+## Persisted state is not the same as resumable state
+
+A saved record can represent an active run, a finished run, or a stale record. Do not derive a `Continue`/`Resume` label from record existence alone.
+
+- Read the persisted status and any terminal flags.
+- Show the resumable label only for genuinely resumable states.
+- Show the new/start label for missing or terminal states.
+- Make the tap behavior match the label: a card labelled as new must start a new run, not restore a terminal one.
+- Add a test for each state transition, including the terminal one.
+
+This is a product-state rule, not a theme rule; keep it in the screen controller or save service, not in a visual variation.
+
 ## State matrix
 
 Exercise at least:

@@ -74,6 +74,32 @@ Use integer multiples of the font's pixel grid. For a 12px font:
 
 Arbitrary sizes (for example 40 or 42) reintroduce blur even with antialiasing disabled.
 
+## Line height is not font size
+
+A `Label`'s minimum height comes from the font's line height, not the requested font size. A 96px pixel font can produce a ~140px minimum height because of ascent, descent, and line spacing.
+
+Consequences:
+
+- `vertical_alignment` centers the glyph inside that line box; it does not remove the extra height.
+- Hardcoded spacers tuned to the font size will be too small.
+- A title that looks vertically centered in the inspector can sit far below the visual top of its container.
+
+Measure before positioning:
+
+```gdscript
+label.get_combined_minimum_size().y
+```
+
+If the concept needs exact glyph placement:
+
+1. Prefer a fixed-height host `Control` with the Label explicitly offset, and document that the offset follows the font's metrics.
+2. Or use a generated logo/`TextureRect` when the title is fixed brand art.
+3. Or accept the line box and adjust the surrounding layout.
+
+Do not copy a magic negative offset into another project without re-measuring at the target font and size.
+
+For English-only metadata such as `BEST` or `NEW`, `Label.uppercase = true` can avoid duplicate uppercase localization strings; CJK strings are unaffected.
+
 ## FontVariation and locale switching
 
 Use a `FontVariation` resource so the Home font can be swapped without touching the project default:

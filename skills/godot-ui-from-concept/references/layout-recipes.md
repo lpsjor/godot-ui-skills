@@ -101,7 +101,10 @@ A stable order that leaves the icon as the flexible region:
 ```text
 Button
 └─ Content (VBoxContainer, mouse_filter = IGNORE)
-   ├─ Icon (TextureRect, vertical EXPAND_FILL, KEEP_ASPECT_CENTERED)
+   ├─ Icon (TextureRect, vertical EXPAND_FILL,
+   │        expand_mode = IGNORE_SIZE,
+   │        stretch_mode = KEEP_ASPECT_CENTERED,
+   │        texture_filter = NEAREST)
    ├─ Name (Label)
    ├─ BestScore (Label)
    └─ StatusRow (CenterContainer, mouse_filter = IGNORE)

@@ -76,10 +76,16 @@ A 64x64 white-alpha texture with a transparent center:
 
 Generate with [gen_ninepatch_glow.gd](../scripts/gen_ninepatch_glow.gd).
 
+### Filtering
+
+- Glow texture: linear filtering; a soft bloom should not stair-step.
+- Pixel icons and borders: nearest filtering.
+- Do not apply one filter setting to the whole card if it makes either layer wrong; set it per texture-bearing node.
+
 ### Scene
 
 ```text
-ModeCard (Button)
+ModeCard (Button, clip_contents = false)
 ├─ Glow (NinePatchRect)
 │  ├─ show_behind_parent = true
 │  ├─ mouse_filter = 2
@@ -90,6 +96,8 @@ ModeCard (Button)
 │  └─ modulate = accent with alpha 0.78
 └─ Content (VBoxContainer, mouse_filter = 2)
 ```
+
+Set `clip_contents = false` on the card, or the child glow's negative offsets are clipped at the card bounds.
 
 ### Theme tint
 

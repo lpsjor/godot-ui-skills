@@ -107,6 +107,8 @@ Button
 
 The glow texture's center should be transparent. The button stylebox supplies the fill; the glow supplies only the halo.
 
+For pixel-style frames, keep `StyleBoxFlat.anti_aliasing = false`, use a small `corner_radius`, and lower `corner_detail` to get a faceted rather than smooth corner. The border remains intentionally hard; the glow is the soft layer.
+
 ## Editor preview
 
 - Keep the theme in a `.tres` file tracked by git.
